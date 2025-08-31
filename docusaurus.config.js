@@ -4,8 +4,8 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import {themes as prismThemes} from 'prism-react-renderer';
-
+// import {themes as prismThemes} from 'prism-react-renderer';
+const {themes: prismThemes} = require('prism-react-renderer');
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
@@ -27,9 +27,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'sammex45', // Usually your GitHub org/user name.
+   organizationName: 'sammex45', // Usually your GitHub org/user name.
   projectName: 'Refract', // Usually your repo name.
-trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -193,22 +192,12 @@ copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with
 };
 
 
-module.exports = {
-  // ... existing config
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
-};
 
 
 module.exports = {
   // ...
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'ignore',
+  onBrokenMarkdownLinks: 'Ignore',
 };
 
-
-
-
-
-
-export default config;
+module.exports = config;
