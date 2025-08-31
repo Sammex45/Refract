@@ -20,15 +20,16 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://sammex45.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/Refract/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'sammex45', // Usually your GitHub org/user name.
+  projectName: 'Refract', // Usually your repo name.
+trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -190,5 +191,24 @@ copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with
       },
     }),
 };
+
+
+module.exports = {
+  // ... existing config
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
+};
+
+
+module.exports = {
+  // ...
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
+};
+
+
+
+
+
 
 export default config;
