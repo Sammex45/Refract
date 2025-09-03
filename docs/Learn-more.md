@@ -1,4 +1,4 @@
-<!-- ---
+---
 id: learn-more
 title: Learn More
 sidebar_label: Learn More
@@ -361,4 +361,4 @@ Check out our [public roadmap](https://roadmap.refract-js.org) to see what's com
 
 ---
 
-**Remember**: The best way to learn Refract is by building with it. Start small, experiment often, and don't hesitate to ask for help in our community. Happy coding! 🚀 -->
+**Remember**: The best way to learn Refract is by building with it. Start small, experiment often, and don't hesitate to ask for help in our community. Happy coding! 🚀

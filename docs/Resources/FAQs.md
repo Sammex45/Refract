@@ -1,4 +1,4 @@
-<!-- ---
+---
 id: faq
 title: Frequently Asked Questions
 sidebar_label: FAQ
@@ -320,7 +320,7 @@ Refract can work with existing state management solutions during migration. We p
 - Context API → Lens adapter
 
 ---
-<!-- 
+ 
 ## Still have questions?
 
 Can't find what you're looking for? 
@@ -328,4 +328,4 @@ Can't find what you're looking for?
 - 📬 [Email us](mailto:support@refract-js.org)
 - 💬 [Join our Discord](https://discord.gg/refract)
 - 🐛 [Report an issue](https://github.com/refract-js/refract/issues)
-- 📖 [Read the documentation](/docs) --> -->
+- 📖 [Read the documentation](/docs) 

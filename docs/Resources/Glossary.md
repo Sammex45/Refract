@@ -1,4 +1,4 @@
-<!-- ---
+---
 id: glossary
 title: Glossary
 sidebar_label: Glossary
@@ -363,4 +363,4 @@ Execution context in Refract that tracks dependencies and effects for proper cle
 - 💡 [Examples](/Refract/docs/category/examples---recipes) - See these terms in action
 - ❓ [FAQ](/Refract/docs/Recources/faq) - Common questions answered
 
-*This glossary is continuously updated as Refract evolves. Last updated: 2024* -->
+*This glossary is continuously updated as Refract evolves. Last updated: 2024*
