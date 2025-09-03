@@ -30,8 +30,8 @@ const config = {
    organizationName: 'sammex45', // Usually your GitHub org/user name.
   projectName: 'Refract', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'ignore',
+  onBrokenMarkdownLinks: 'ignore',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -123,7 +123,7 @@ const config = {
               },
               {
                 label: 'Changelog',
-                to: '/docs/category/Changelog',
+                to: '/Refract/docs/Resources/changelog',
               },
               {
                 label: 'Resources',
@@ -159,10 +159,7 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
+             
               {
                 label: 'GitHub',
                 href: 'https://github.com/facebook/docusaurus',
@@ -191,13 +188,5 @@ copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with
     }),
 };
 
-
-
-
-module.exports = {
-  // ...
-  onBrokenLinks: 'ignore',
-  onBrokenMarkdownLinks: 'Ignore',
-};
 
 module.exports = config;

@@ -471,4 +471,4 @@ Refract is [MIT licensed](https://github.com/refract-js/refract/blob/main/LICENS
 [1.0.0]: https://github.com/refract-js/refract/releases/tag/v1.0.0
 [0.9.0-beta.5]: https://github.com/refract-js/refract/releases/tag/v0.9.0-beta.5
 [0.9.0-beta.4]: https://github.com/refract-js/refract/releases/tag/v0.9.0-beta.4
-<!-- Add more version links as needed -->
+Add more version links as needed

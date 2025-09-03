@@ -1,4 +1,4 @@
----
+<!-- ---
 id: contributing
 title: Contributing to Refract
 sidebar_label: Contributing
@@ -544,7 +544,7 @@ Contributors are recognized in:
 By contributing to Refract, you agree that your contributions will be licensed under the MIT License.
 
 ---
-
+<!-- 
 ## Quick Links
 
 - 🏠 [Project Homepage](https://refract-js.org)
@@ -553,6 +553,6 @@ By contributing to Refract, you agree that your contributions will be licensed u
 - 💬 [Discord Community](https://discord.gg/refract)
 - 🔧 [Development Guide](https://github.com/refract-js/refract/wiki/Development-Guide)
 
----
+--- -->
 
-**Thank you for contributing to Refract! Together, we're building the future of reactive UI development.** 🚀
+**Thank you for contributing to Refract! Together, we're building the future of reactive UI development.** 🚀 -->
