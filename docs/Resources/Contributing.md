@@ -29,6 +29,7 @@ By participating in this project, you agree to abide by our [Code of Conduct](ht
 ### Our Pledge
 
 We pledge to make participation in our project a harassment-free experience for everyone, regardless of:
+
 - Age, body size, disability, ethnicity, gender identity and expression
 - Level of experience, education, socio-economic status
 - Nationality, personal appearance, race, religion
@@ -36,7 +37,7 @@ We pledge to make participation in our project a harassment-free experience for 
 
 ## How Can I Contribute?
 
-### 🐛 Reporting Bugs
+### Reporting Bugs
 
 Before creating bug reports, please check existing issues to avoid duplicates. When creating a bug report, include:
 
@@ -53,34 +54,42 @@ Before creating bug reports, please check existing issues to avoid duplicates. W
 
 **Bug Report Template:**
 
-```markdown
+````markdown
 ## Description
+
 Brief description of the bug
 
 ## Steps to Reproduce
+
 1. Step one
 2. Step two
 3. Step three
 
 ## Expected Behavior
+
 What should happen
 
 ## Actual Behavior
+
 What actually happens
 
 ## Code Sample
+
 ```javascript
 // Minimal reproduction code
 ```
+````
 
 ## Environment
-- Refract version: 
-- Node.js version: 
-- Browser: 
-- OS: 
-```
 
-### 💡 Suggesting Enhancements
+- Refract version:
+- Node.js version:
+- Browser:
+- OS:
+
+````
+
+### Suggesting Enhancements
 
 Enhancement suggestions are tracked as GitHub issues. When creating an enhancement suggestion, include:
 
@@ -89,7 +98,7 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 3. **Alternatives considered** - What other solutions did you consider?
 4. **Additional context** - Any mockups, diagrams, or examples
 
-### 🔧 Pull Requests
+### Pull Requests
 
 1. **Small, focused PRs** are easier to review and merge
 2. **One feature/fix per PR**
@@ -98,7 +107,7 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 5. **Follow our coding standards**
 6. **Write clear commit messages**
 
-### 📝 Improving Documentation
+### Improving Documentation
 
 Documentation improvements are always welcome! This includes:
 - Fixing typos or clarifying language
@@ -107,7 +116,7 @@ Documentation improvements are always welcome! This includes:
 - Translating documentation
 - Writing tutorials or blog posts
 
-### 🎨 Contributing Examples
+### Contributing Examples
 
 Share your Refract projects and examples:
 1. Add to the `/examples` directory
@@ -131,24 +140,28 @@ Share your Refract projects and examples:
    # Click "Fork" on GitHub, then clone your fork
    git clone https://github.com/YOUR-USERNAME/refract.git
    cd refract
-   ```
+````
 
 2. **Add upstream remote**
+
    ```bash
    git remote add upstream https://github.com/refract-js/refract.git
    ```
 
 3. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 4. **Build the project**
+
    ```bash
    npm run build
    ```
 
 5. **Run tests**
+
    ```bash
    npm test
    ```
@@ -163,6 +176,7 @@ Share your Refract projects and examples:
 #### VS Code Extensions
 
 We recommend these extensions for the best development experience:
+
 - ESLint
 - Prettier
 - TypeScript and JavaScript Language Features
@@ -172,6 +186,7 @@ We recommend these extensions for the best development experience:
 #### Editor Configuration
 
 `.vscode/settings.json`:
+
 ```json
 {
   "editor.formatOnSave": true,
@@ -215,16 +230,19 @@ refract/
 ### Creating a New Feature
 
 1. **Create a feature branch**
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
 
 2. **Make your changes**
+
    - Write code
    - Add tests
    - Update documentation
 
 3. **Test your changes**
+
    ```bash
    npm test
    npm run lint
@@ -242,16 +260,19 @@ refract/
 When modifying core functionality:
 
 1. **Run core tests**
+
    ```bash
    npm run test:core
    ```
 
 2. **Test in playground**
+
    ```bash
    npm run playground
    ```
 
 3. **Check bundle size**
+
    ```bash
    npm run size
    ```
@@ -264,19 +285,21 @@ When modifying core functionality:
 ### Debugging
 
 1. **Enable debug mode**
+
    ```javascript
    window.__REFRACT_DEBUG__ = true;
    ```
 
 2. **Use DevTools**
+
    - Install Refract DevTools extension
    - Open browser DevTools
    - Navigate to "Refract" tab
 
 3. **Add debug statements**
    ```javascript
-   import { debug } from '@refract/core/debug';
-   debug('component', 'Component rendered', props);
+   import { debug } from "@refract/core/debug";
+   debug("component", "Component rendered", props);
    ```
 
 ## Testing
@@ -302,9 +325,10 @@ npm run test:coverage
 ### Writing Tests
 
 1. **Unit Tests** - Test individual functions
+
    ```javascript
-   describe('useRefraction', () => {
-     it('should initialize with default value', () => {
+   describe("useRefraction", () => {
+     it("should initialize with default value", () => {
        const { result } = renderHook(() => useRefraction(0));
        expect(result.current.value).toBe(0);
      });
@@ -312,20 +336,21 @@ npm run test:coverage
    ```
 
 2. **Integration Tests** - Test component interactions
+
    ```javascript
-   it('should update child when parent state changes', async () => {
+   it("should update child when parent state changes", async () => {
      const { getByText } = render(<ParentComponent />);
-     fireEvent.click(getByText('Update'));
+     fireEvent.click(getByText("Update"));
      await waitFor(() => {
-       expect(getByText('Updated')).toBeInTheDocument();
+       expect(getByText("Updated")).toBeInTheDocument();
      });
    });
    ```
 
 3. **E2E Tests** - Test full user flows
    ```javascript
-   test('user can complete checkout', async ({ page }) => {
-     await page.goto('/shop');
+   test("user can complete checkout", async ({ page }) => {
+     await page.goto("/shop");
      await page.click('[data-testid="add-to-cart"]');
      await page.click('[data-testid="checkout"]');
      // ... more steps
@@ -355,6 +380,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 ```
 
 **Types:**
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -367,6 +393,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 - `chore`: Other changes
 
 **Examples:**
+
 ```bash
 feat(core): add support for async refractions
 fix(compiler): resolve JSX transformation issue
@@ -377,41 +404,49 @@ perf(core): optimize virtual DOM diffing
 ### Pull Request Process
 
 1. **Update your fork**
+
    ```bash
    git fetch upstream
    git rebase upstream/main
    ```
 
 2. **Push to your fork**
+
    ```bash
    git push origin feature/your-feature
    ```
 
 3. **Create Pull Request**
+
    - Go to GitHub
    - Click "New Pull Request"
    - Select your branch
    - Fill out the PR template
 
 4. **PR Template:**
+
    ```markdown
    ## Description
+
    Brief description of changes
 
    ## Type of Change
+
    - [ ] Bug fix
    - [ ] New feature
    - [ ] Breaking change
    - [ ] Documentation update
 
    ## Testing
+
    - [ ] Tests pass locally
    - [ ] Added new tests
    - [ ] Updated documentation
 
    ## Screenshots (if applicable)
-   
+
    ## Related Issues
+
    Closes #123
    ```
 
@@ -453,9 +488,9 @@ oldObject.key = value;
 
 ```javascript
 // 1. Imports
-import { external } from 'package';
-import { internal } from '@/internal';
-import { relative } from './relative';
+import { external } from "package";
+import { internal } from "@/internal";
+import { relative } from "./relative";
 
 // 2. Types/Interfaces
 interface Props {
@@ -479,6 +514,7 @@ export { Component };
 ### Writing Documentation
 
 1. **API Documentation**
+
    - Use JSDoc comments
    - Include examples
    - Document parameters and return values
@@ -495,6 +531,7 @@ export { Component };
    ```
 
 2. **Guide Documentation**
+
    - Use clear, simple language
    - Include code examples
    - Add diagrams where helpful
@@ -518,14 +555,15 @@ export { Component };
 
 ### Getting Help
 
-- 💬 **Discord**: [Join our server](https://discord.gg/refract)
-- 💭 **Discussions**: [GitHub Discussions](https://github.com/refract-js/refract/discussions)
-- 🐦 **Twitter**: [@refractjs](https://twitter.com/refractjs)
-- 📧 **Email**: dev@refract-js.org
+- **Discord**: [Join our server](https://discord.gg/refract)
+- **Discussions**: [GitHub Discussions](https://github.com/refract-js/refract/discussions)
+- **Twitter**: [@refractjs](https://twitter.com/refractjs)
+- **Email**: dev@refract-js.org
 
 ### Core Team
 
 Our core maintainers are:
+
 - @maintainer1 - Core architecture
 - @maintainer2 - Compiler & optimization
 - @maintainer3 - DevTools & DX
@@ -534,6 +572,7 @@ Our core maintainers are:
 ### Recognition
 
 Contributors are recognized in:
+
 - Our [Contributors](https://github.com/refract-js/refract/graphs/contributors) page
 - Release notes
 - Annual contributor spotlight
@@ -544,14 +583,15 @@ Contributors are recognized in:
 By contributing to Refract, you agree that your contributions will be licensed under the MIT License.
 
 ---
+
 ## Quick Links
 
-- 🏠 [Project Homepage](https://refract-js.org)
-- 📖 [Documentation](https://docs.refract-js.org)
-- 🐛 [Issue Tracker](https://github.com/refract-js/refract/issues)
-- 💬 [Discord Community](https://discord.gg/refract)
-- 🔧 [Development Guide](https://github.com/refract-js/refract/wiki/Development-Guide)
+- [Project Homepage](https://refract-js.org)
+- [Documentation](https://docs.refract-js.org)
+- [Issue Tracker](https://github.com/refract-js/refract/issues)
+- [Discord Community](https://discord.gg/refract)
+- [Development Guide](https://github.com/refract-js/refract/wiki/Development-Guide)
 
---- 
+---
 
-**Thank you for contributing to Refract! Together, we're building the future of reactive UI development.** 🚀
+**Thank you for contributing to Refract! Together, we're building the future of reactive UI development.**

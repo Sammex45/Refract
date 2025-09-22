@@ -1,5 +1,4 @@
 ---
-
 sidebar_position: 3
 ---
 
@@ -7,20 +6,21 @@ sidebar_position: 3
 
 Build your first Refract app in under 10 minutes! This hands-on guide will teach you the fundamentals by building a real application.
 
-## 🎯 What We'll Build
+## What We'll Build
 
 We'll create an interactive task manager app that demonstrates:
-- ✅ Components and JSX
-- ✅ Reactive state with refractions
-- ✅ Event handling
-- ✅ Lists and keys
-- ✅ Conditional rendering
-- ✅ Side effects
-- ✅ Styling
+
+- Components and JSX
+- Reactive state with refractions
+- Event handling
+- Lists and keys
+- Conditional rendering
+- Side effects
+- Styling
 
 ![Task Manager Preview](https://refract-js.org/img/quickstart-preview.png)
 
-## 🚀 Step 1: Create Your App
+## Step 1: Create Your App
 
 Open your terminal and run:
 
@@ -30,79 +30,77 @@ cd quick-task-app
 npm start
 ```
 
-Your app is now running at [http://localhost:3000](http://localhost:3000) 🎉
+Your app is now running at [http://localhost:3000](http://localhost:3000)
 
-## 📝 Step 2: Your First Component
+## Step 2: Your First Component
 
 Replace the contents of `src/App.jsx` with:
 
 ```jsx
-import { createComponent } from 'refract-js'
+import { createComponent } from "refract-js";
 
 const App = createComponent(({ lens }) => {
   return (
     <div className="app">
-      <h1>📝 My Task Manager</h1>
+      <h1>My Task Manager</h1>
       <p>Let's build something awesome with Refract!</p>
     </div>
-  )
-})
+  );
+});
 
-export default App
+export default App;
 ```
 
 ### What's happening here?
+
 - `createComponent` creates a Refract component
 - Components receive a `lens` object that provides access to state and props
 - We return JSX that describes our UI
 - The component automatically re-renders when state changes
 
-Save the file and see your app update instantly! ✨
+Save the file and see your app update instantly!
 
-## 🔄 Step 3: Add Reactive State
+## Step 3: Add Reactive State
 
 Let's add state to track our tasks:
 
 ```jsx
-import { createComponent } from 'refract-js'
+import { createComponent } from "refract-js";
 
 const App = createComponent(({ lens }) => {
   // Create reactive state with useRefraction
   const tasks = lens.useRefraction([
-    { id: 1, text: 'Learn Refract basics', done: false },
-    { id: 2, text: 'Build an awesome app', done: false },
-    { id: 3, text: 'Share with friends', done: false }
-  ])
+    { id: 1, text: "Learn Refract basics", done: false },
+    { id: 2, text: "Build an awesome app", done: false },
+    { id: 3, text: "Share with friends", done: false },
+  ]);
 
   return (
     <div className="app">
-      <h1>📝 My Task Manager</h1>
-      <div className="task-count">
-        You have {tasks.value.length} tasks
-      </div>
-      
+      <h1>My Task Manager</h1>
+      <div className="task-count">You have {tasks.value.length} tasks</div>
+
       {/* Display tasks */}
       <ul className="task-list">
-        {tasks.value.map(task => (
-          <li key={task.id}>
-            {task.text}
-          </li>
+        {tasks.value.map((task) => (
+          <li key={task.id}>{task.text}</li>
         ))}
       </ul>
     </div>
-  )
-})
+  );
+});
 
-export default App
+export default App;
 ```
 
 ### Key Concepts:
+
 - `lens.useRefraction()` creates reactive state
 - Access the current value with `.value`
 - The UI automatically updates when state changes
 - Always use `key` prop when rendering lists
 
-## 🎨 Step 4: Add Styling
+## Step 4: Add Styling
 
 Create `src/App.css`:
 
@@ -111,7 +109,7 @@ Create `src/App.css`:
   max-width: 600px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 h1 {
@@ -287,63 +285,63 @@ h1 {
 Import the CSS in your `App.jsx`:
 
 ```jsx
-import { createComponent } from 'refract-js'
-import './App.css'
+import { createComponent } from "refract-js";
+import "./App.css";
 
 // ... rest of your component
 ```
 
-## ⚡ Step 5: Add Interactivity
+## Step 5: Add Interactivity
 
 Update your `App.jsx` to handle task interactions:
 
 ```jsx
-import { createComponent } from 'refract-js'
-import './App.css'
+import { createComponent } from "refract-js";
+import "./App.css";
 
 const App = createComponent(({ lens }) => {
   const tasks = lens.useRefraction([
-    { id: 1, text: 'Learn Refract basics', done: false },
-    { id: 2, text: 'Build an awesome app', done: false },
-    { id: 3, text: 'Share with friends', done: false }
-  ])
-  
-  const newTaskText = lens.useRefraction('')
+    { id: 1, text: "Learn Refract basics", done: false },
+    { id: 2, text: "Build an awesome app", done: false },
+    { id: 3, text: "Share with friends", done: false },
+  ]);
+
+  const newTaskText = lens.useRefraction("");
 
   // Toggle task completion
   const toggleTask = (id) => {
     tasks.set(
-      tasks.value.map(task =>
+      tasks.value.map((task) =>
         task.id === id ? { ...task, done: !task.done } : task
       )
-    )
-  }
+    );
+  };
 
   // Delete a task
   const deleteTask = (id) => {
-    tasks.set(tasks.value.filter(task => task.id !== id))
-  }
+    tasks.set(tasks.value.filter((task) => task.id !== id));
+  };
 
   // Add a new task
   const addTask = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (newTaskText.value.trim()) {
       const newTask = {
         id: Date.now(),
         text: newTaskText.value,
-        done: false
-      }
-      tasks.set([...tasks.value, newTask])
-      newTaskText.set('')
+        done: false,
+      };
+      tasks.set([...tasks.value, newTask]);
+      newTaskText.set("");
     }
-  }
+  };
 
   return (
     <div className="app">
-      <h1>📝 My Task Manager</h1>
-      
+      <h1>My Task Manager</h1>
+
       <div className="task-count">
-        You have {tasks.value.filter(t => !t.done).length} active tasks
+        You have {tasks.value.filter((t) => !t.done).length} active tasks
       </div>
 
       {/* Add task form */}
@@ -355,8 +353,8 @@ const App = createComponent(({ lens }) => {
           value={newTaskText.value}
           onChange={(e) => newTaskText.set(e.target.value)}
         />
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           className="add-btn"
           disabled={!newTaskText.value.trim()}
         >
@@ -366,8 +364,8 @@ const App = createComponent(({ lens }) => {
 
       {/* Task list */}
       <ul className="task-list">
-        {tasks.value.map(task => (
-          <li key={task.id} className={`task-item ${task.done ? 'done' : ''}`}>
+        {tasks.value.map((task) => (
+          <li key={task.id} className={`task-item ${task.done ? "done" : ""}`}>
             <input
               type="checkbox"
               className="task-checkbox"
@@ -375,10 +373,7 @@ const App = createComponent(({ lens }) => {
               onChange={() => toggleTask(task.id)}
             />
             <span className="task-text">{task.text}</span>
-            <button 
-              className="delete-btn"
-              onClick={() => deleteTask(task.id)}
-            >
+            <button className="delete-btn" onClick={() => deleteTask(task.id)}>
               Delete
             </button>
           </li>
@@ -386,78 +381,78 @@ const App = createComponent(({ lens }) => {
       </ul>
 
       {tasks.value.length === 0 && (
-        <p style={{ textAlign: 'center', color: '#718096' }}>
-          No tasks yet. Add one above! 🎯
+        <p style={{ textAlign: "center", color: "#718096" }}>
+          No tasks yet. Add one above!
         </p>
       )}
     </div>
-  )
-})
+  );
+});
 
-export default App
+export default App;
 ```
 
-## 🎯 Step 6: Add Filters
+## Step 6: Add Filters
 
 Let's add the ability to filter tasks:
 
 ```jsx
-import { createComponent } from 'refract-js'
-import './App.css'
+import { createComponent } from "refract-js";
+import "./App.css";
 
 const App = createComponent(({ lens }) => {
   const tasks = lens.useRefraction([
-    { id: 1, text: 'Learn Refract basics', done: false },
-    { id: 2, text: 'Build an awesome app', done: false },
-    { id: 3, text: 'Share with friends', done: false }
-  ])
-  
-  const newTaskText = lens.useRefraction('')
-  const filter = lens.useRefraction('all') // 'all', 'active', 'completed'
+    { id: 1, text: "Learn Refract basics", done: false },
+    { id: 2, text: "Build an awesome app", done: false },
+    { id: 3, text: "Share with friends", done: false },
+  ]);
+
+  const newTaskText = lens.useRefraction("");
+  const filter = lens.useRefraction("all"); // 'all', 'active', 'completed'
 
   const toggleTask = (id) => {
     tasks.set(
-      tasks.value.map(task =>
+      tasks.value.map((task) =>
         task.id === id ? { ...task, done: !task.done } : task
       )
-    )
-  }
+    );
+  };
 
   const deleteTask = (id) => {
-    tasks.set(tasks.value.filter(task => task.id !== id))
-  }
+    tasks.set(tasks.value.filter((task) => task.id !== id));
+  };
 
   const addTask = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (newTaskText.value.trim()) {
       const newTask = {
         id: Date.now(),
         text: newTaskText.value,
-        done: false
-      }
-      tasks.set([...tasks.value, newTask])
-      newTaskText.set('')
+        done: false,
+      };
+      tasks.set([...tasks.value, newTask]);
+      newTaskText.set("");
     }
-  }
+  };
 
   // Filter tasks based on current filter
-  const filteredTasks = tasks.value.filter(task => {
-    if (filter.value === 'active') return !task.done
-    if (filter.value === 'completed') return task.done
-    return true
-  })
+  const filteredTasks = tasks.value.filter((task) => {
+    if (filter.value === "active") return !task.done;
+    if (filter.value === "completed") return task.done;
+    return true;
+  });
 
   // Calculate statistics
   const stats = {
     total: tasks.value.length,
-    active: tasks.value.filter(t => !t.done).length,
-    completed: tasks.value.filter(t => t.done).length
-  }
+    active: tasks.value.filter((t) => !t.done).length,
+    completed: tasks.value.filter((t) => t.done).length,
+  };
 
   return (
     <div className="app">
-      <h1>📝 My Task Manager</h1>
-      
+      <h1>My Task Manager</h1>
+
       {/* Statistics */}
       <div className="stats">
         <div className="stat-card">
@@ -483,8 +478,8 @@ const App = createComponent(({ lens }) => {
           value={newTaskText.value}
           onChange={(e) => newTaskText.set(e.target.value)}
         />
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           className="add-btn"
           disabled={!newTaskText.value.trim()}
         >
@@ -495,20 +490,22 @@ const App = createComponent(({ lens }) => {
       {/* Filter buttons */}
       <div className="filters">
         <button
-          className={`filter-btn ${filter.value === 'all' ? 'active' : ''}`}
-          onClick={() => filter.set('all')}
+          className={`filter-btn ${filter.value === "all" ? "active" : ""}`}
+          onClick={() => filter.set("all")}
         >
           All
         </button>
         <button
-          className={`filter-btn ${filter.value === 'active' ? 'active' : ''}`}
-          onClick={() => filter.set('active')}
+          className={`filter-btn ${filter.value === "active" ? "active" : ""}`}
+          onClick={() => filter.set("active")}
         >
           Active
         </button>
         <button
-          className={`filter-btn ${filter.value === 'completed' ? 'active' : ''}`}
-          onClick={() => filter.set('completed')}
+          className={`filter-btn ${
+            filter.value === "completed" ? "active" : ""
+          }`}
+          onClick={() => filter.set("completed")}
         >
           Completed
         </button>
@@ -516,8 +513,8 @@ const App = createComponent(({ lens }) => {
 
       {/* Task list */}
       <ul className="task-list">
-        {filteredTasks.map(task => (
-          <li key={task.id} className={`task-item ${task.done ? 'done' : ''}`}>
+        {filteredTasks.map((task) => (
+          <li key={task.id} className={`task-item ${task.done ? "done" : ""}`}>
             <input
               type="checkbox"
               className="task-checkbox"
@@ -525,10 +522,7 @@ const App = createComponent(({ lens }) => {
               onChange={() => toggleTask(task.id)}
             />
             <span className="task-text">{task.text}</span>
-            <button 
-              className="delete-btn"
-              onClick={() => deleteTask(task.id)}
-            >
+            <button className="delete-btn" onClick={() => deleteTask(task.id)}>
               Delete
             </button>
           </li>
@@ -536,107 +530,107 @@ const App = createComponent(({ lens }) => {
       </ul>
 
       {filteredTasks.length === 0 && (
-        <p style={{ textAlign: 'center', color: '#718096' }}>
-          {filter.value === 'completed' 
-            ? 'No completed tasks yet! 🎯'
-            : filter.value === 'active'
-            ? 'No active tasks. Great job! 🎉'
-            : 'No tasks yet. Add one above! 📝'}
+        <p style={{ textAlign: "center", color: "#718096" }}>
+          {filter.value === "completed"
+            ? "No completed tasks yet!"
+            : filter.value === "active"
+            ? "No active tasks. Great job!"
+            : "No tasks yet. Add one above!"}
         </p>
       )}
     </div>
-  )
-})
+  );
+});
 
-export default App
+export default App;
 ```
 
-## 💾 Step 7: Add Local Storage
+## Step 7: Add Local Storage
 
 Let's persist tasks in localStorage using effects:
 
 ```jsx
-import { createComponent } from 'refract-js'
-import './App.css'
+import { createComponent } from "refract-js";
+import "./App.css";
 
 const App = createComponent(({ lens }) => {
   // Load tasks from localStorage or use defaults
   const loadTasks = () => {
-    const saved = localStorage.getItem('refract-tasks')
+    const saved = localStorage.getItem("refract-tasks");
     if (saved) {
-      return JSON.parse(saved)
+      return JSON.parse(saved);
     }
     return [
-      { id: 1, text: 'Learn Refract basics', done: false },
-      { id: 2, text: 'Build an awesome app', done: false },
-      { id: 3, text: 'Share with friends', done: false }
-    ]
-  }
+      { id: 1, text: "Learn Refract basics", done: false },
+      { id: 2, text: "Build an awesome app", done: false },
+      { id: 3, text: "Share with friends", done: false },
+    ];
+  };
 
-  const tasks = lens.useRefraction(loadTasks())
-  const newTaskText = lens.useRefraction('')
-  const filter = lens.useRefraction('all')
+  const tasks = lens.useRefraction(loadTasks());
+  const newTaskText = lens.useRefraction("");
+  const filter = lens.useRefraction("all");
 
   // Save tasks to localStorage whenever they change
   lens.useEffect(() => {
-    localStorage.setItem('refract-tasks', JSON.stringify(tasks.value))
-  }, [tasks.value])
+    localStorage.setItem("refract-tasks", JSON.stringify(tasks.value));
+  }, [tasks.value]);
 
   // Show a welcome message on first load
   lens.useEffect(() => {
-    console.log('🚀 Welcome to Refract Task Manager!')
-    
+    console.log("Welcome to Refract Task Manager!");
+
     // Cleanup function (optional)
     return () => {
-      console.log('👋 Goodbye!')
-    }
-  }, []) // Empty dependency array = run once on mount
+      console.log("Goodbye!");
+    };
+  }, []); // Empty dependency array = run once on mount
 
   const toggleTask = (id) => {
     tasks.set(
-      tasks.value.map(task =>
+      tasks.value.map((task) =>
         task.id === id ? { ...task, done: !task.done } : task
       )
-    )
-  }
+    );
+  };
 
   const deleteTask = (id) => {
-    tasks.set(tasks.value.filter(task => task.id !== id))
-  }
+    tasks.set(tasks.value.filter((task) => task.id !== id));
+  };
 
   const addTask = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (newTaskText.value.trim()) {
       const newTask = {
         id: Date.now(),
         text: newTaskText.value,
-        done: false
-      }
-      tasks.set([...tasks.value, newTask])
-      newTaskText.set('')
+        done: false,
+      };
+      tasks.set([...tasks.value, newTask]);
+      newTaskText.set("");
     }
-  }
+  };
 
   const clearCompleted = () => {
-    tasks.set(tasks.value.filter(task => !task.done))
-  }
+    tasks.set(tasks.value.filter((task) => !task.done));
+  };
 
-  const filteredTasks = tasks.value.filter(task => {
-    if (filter.value === 'active') return !task.done
-    if (filter.value === 'completed') return task.done
-    return true
-  })
+  const filteredTasks = tasks.value.filter((task) => {
+    if (filter.value === "active") return !task.done;
+    if (filter.value === "completed") return task.done;
+    return true;
+  });
 
   const stats = {
     total: tasks.value.length,
-    active: tasks.value.filter(t => !t.done).length,
-    completed: tasks.value.filter(t => t.done).length
-  }
+    active: tasks.value.filter((t) => !t.done).length,
+    completed: tasks.value.filter((t) => t.done).length,
+  };
 
   return (
     <div className="app">
-      <h1>📝 My Task Manager</h1>
-      
+      <h1>My Task Manager</h1>
+
       <div className="stats">
         <div className="stat-card">
           <div className="stat-value">{stats.total}</div>
@@ -660,8 +654,8 @@ const App = createComponent(({ lens }) => {
           value={newTaskText.value}
           onChange={(e) => newTaskText.set(e.target.value)}
         />
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           className="add-btn"
           disabled={!newTaskText.value.trim()}
         >
@@ -671,28 +665,30 @@ const App = createComponent(({ lens }) => {
 
       <div className="filters">
         <button
-          className={`filter-btn ${filter.value === 'all' ? 'active' : ''}`}
-          onClick={() => filter.set('all')}
+          className={`filter-btn ${filter.value === "all" ? "active" : ""}`}
+          onClick={() => filter.set("all")}
         >
           All ({stats.total})
         </button>
         <button
-          className={`filter-btn ${filter.value === 'active' ? 'active' : ''}`}
-          onClick={() => filter.set('active')}
+          className={`filter-btn ${filter.value === "active" ? "active" : ""}`}
+          onClick={() => filter.set("active")}
         >
           Active ({stats.active})
         </button>
         <button
-          className={`filter-btn ${filter.value === 'completed' ? 'active' : ''}`}
-          onClick={() => filter.set('completed')}
+          className={`filter-btn ${
+            filter.value === "completed" ? "active" : ""
+          }`}
+          onClick={() => filter.set("completed")}
         >
           Completed ({stats.completed})
         </button>
       </div>
 
       <ul className="task-list">
-        {filteredTasks.map(task => (
-          <li key={task.id} className={`task-item ${task.done ? 'done' : ''}`}>
+        {filteredTasks.map((task) => (
+          <li key={task.id} className={`task-item ${task.done ? "done" : ""}`}>
             <input
               type="checkbox"
               className="task-checkbox"
@@ -700,10 +696,7 @@ const App = createComponent(({ lens }) => {
               onChange={() => toggleTask(task.id)}
             />
             <span className="task-text">{task.text}</span>
-            <button 
-              className="delete-btn"
-              onClick={() => deleteTask(task.id)}
-            >
+            <button className="delete-btn" onClick={() => deleteTask(task.id)}>
               Delete
             </button>
           </li>
@@ -711,38 +704,39 @@ const App = createComponent(({ lens }) => {
       </ul>
 
       {filteredTasks.length === 0 && (
-        <p style={{ textAlign: 'center', color: '#718096' }}>
-          {filter.value === 'completed' 
-            ? 'No completed tasks yet! 🎯'
-            : filter.value === 'active'
-            ? 'No active tasks. Great job! 🎉'
-            : 'No tasks yet. Add one above! 📝'}
+        <p style={{ textAlign: "center", color: "#718096" }}>
+          {filter.value === "completed"
+            ? "No completed tasks yet!"
+            : filter.value === "active"
+            ? "No active tasks. Great job!"
+            : "No tasks yet. Add one above!"}
         </p>
       )}
 
       {stats.completed > 0 && (
-        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-          <button 
+        <div style={{ textAlign: "center", marginTop: "2rem" }}>
+          <button
             className="delete-btn"
             onClick={clearCompleted}
-            style={{ padding: '0.5rem 1rem' }}
+            style={{ padding: "0.5rem 1rem" }}
           >
-            Clear {stats.completed} completed task{stats.completed !== 1 ? 's' : ''}
+            Clear {stats.completed} completed task
+            {stats.completed !== 1 ? "s" : ""}
           </button>
         </div>
       )}
     </div>
-  )
-})
+  );
+});
 
-export default App
+export default App;
 ```
 
-## 🎉 Congratulations!
+## Congratulations!
 
 You've just built a fully functional task manager with Refract! Let's review what you learned:
 
-### ✅ Core Concepts Mastered
+### Core Concepts Mastered
 
 1. **Components** - Created reusable UI components with `createComponent`
 2. **Refractions** - Used reactive state that automatically updates the UI
@@ -753,7 +747,7 @@ You've just built a fully functional task manager with Refract! Let's review wha
 7. **Effects** - Used side effects for localStorage persistence
 8. **Styling** - Applied CSS for a polished look
 
-## 🚀 Next Steps
+## Next Steps
 
 ### Enhance Your App
 
@@ -771,12 +765,12 @@ const category = lens.useRefraction('personal') // 'work', 'personal', 'shopping
 
 // 4. Add search functionality
 const searchTerm = lens.useRefraction('')
-const searchedTasks = filteredTasks.filter(task => 
+const searchedTasks = filteredTasks.filter(task =>
   task.text.toLowerCase().includes(searchTerm.value.toLowerCase())
 )
 
 // 5. Add animations
-<div animate={{ 
+<div animate={{
   opacity: [0, 1],
   x: [-20, 0],
   transition: { duration: 0.3 }
@@ -793,10 +787,10 @@ Create reusable components:
 
 ```jsx
 const TaskItem = createComponent(({ lens }) => {
-  const { task, onToggle, onDelete } = lens.props
-  
+  const { task, onToggle, onDelete } = lens.props;
+
   return (
-    <li className={`task-item ${task.done ? 'done' : ''}`}>
+    <li className={`task-item ${task.done ? "done" : ""}`}>
       <input
         type="checkbox"
         checked={task.done}
@@ -805,8 +799,8 @@ const TaskItem = createComponent(({ lens }) => {
       <span className="task-text">{task.text}</span>
       <button onClick={() => onDelete(task.id)}>Delete</button>
     </li>
-  )
-})
+  );
+});
 ```
 
 #### 2. Create Custom Optics (Hooks)
@@ -814,31 +808,31 @@ const TaskItem = createComponent(({ lens }) => {
 ```jsx
 // Create a reusable task manager optic
 function useTaskManager(initialTasks = []) {
-  const tasks = useRefraction(initialTasks)
-  
+  const tasks = useRefraction(initialTasks);
+
   const addTask = (text) => {
-    const newTask = { id: Date.now(), text, done: false }
-    tasks.set([...tasks.value, newTask])
-  }
-  
+    const newTask = { id: Date.now(), text, done: false };
+    tasks.set([...tasks.value, newTask]);
+  };
+
   const toggleTask = (id) => {
-    tasks.set(tasks.value.map(t => 
-      t.id === id ? { ...t, done: !t.done } : t
-    ))
-  }
-  
+    tasks.set(
+      tasks.value.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
+    );
+  };
+
   const deleteTask = (id) => {
-    tasks.set(tasks.value.filter(t => t.id !== id))
-  }
-  
-  return { tasks, addTask, toggleTask, deleteTask }
+    tasks.set(tasks.value.filter((t) => t.id !== id));
+  };
+
+  return { tasks, addTask, toggleTask, deleteTask };
 }
 ```
 
 #### 3. Add Routing
 
 ```jsx
-import { Router, Route, Link } from '@refract/router'
+import { Router, Route, Link } from "@refract/router";
 
 const App = createComponent(() => {
   return (
@@ -848,16 +842,16 @@ const App = createComponent(() => {
         <Link to="/stats">Statistics</Link>
         <Link to="/settings">Settings</Link>
       </nav>
-      
+
       <Route path="/" component={TaskList} />
       <Route path="/stats" component={Statistics} />
       <Route path="/settings" component={Settings} />
     </Router>
-  )
-})
+  );
+});
 ```
 
-## 📚 Learn More
+## Learn More
 
 Ready to dive deeper? Check out these resources:
 
@@ -867,7 +861,7 @@ Ready to dive deeper? Check out these resources:
 - **[Tutorial Series](/tutorials)** - Step-by-step guides
 - **[Community Discord](https://discord.gg/refract)** - Get help and share your projects
 
-## 🤝 Share Your Creation
+## Share Your Creation
 
 Built something cool? We'd love to see it!
 
@@ -875,7 +869,7 @@ Built something cool? We'd love to see it!
 2. Show it off in our [Discord showcase](https://discord.gg/refract)
 3. Submit it to our [examples repository](https://github.com/refract-js/examples)
 
-## 💡 Quick Reference
+## Quick Reference
 
 Here's a handy reference for what you learned:
 
@@ -883,41 +877,40 @@ Here's a handy reference for what you learned:
 // Create a component
 const MyComponent = createComponent(({ lens }) => {
   // Create reactive state
-  const state = lens.useRefraction(initialValue)
-  
+  const state = lens.useRefraction(initialValue);
+
   // Read state value
-  console.log(state.value)
-  
+  console.log(state.value);
+
   // Update state
-  state.set(newValue)
-  
+  state.set(newValue);
+
   // Use effects
   lens.useEffect(() => {
     // Side effect code
     return () => {
       // Cleanup (optional)
-    }
-  }, [dependencies])
-  
+    };
+  }, [dependencies]);
+
   // Access props
-  const { propName } = lens.props
-  
+  const { propName } = lens.props;
+
   // Return JSX
-  return <div>Hello Refract!</div>
-})
+  return <div>Hello Refract!</div>;
+});
 
 // Common patterns
-const toggle = () => state.set(!state.value)
-const increment = () => count.set(count.value + 1)
-const addItem = (item) => list.set([...list.value, item])
-const removeItem = (id) => list.set(list.value.filter(i => i.id !== id))
-const updateItem = (id, updates) => list.set(
-  list.value.map(i => i.id === id ? { ...i, ...updates } : i)
-)
+const toggle = () => state.set(!state.value);
+const increment = () => count.set(count.value + 1);
+const addItem = (item) => list.set([...list.value, item]);
+const removeItem = (id) => list.set(list.value.filter((i) => i.id !== id));
+const updateItem = (id, updates) =>
+  list.set(list.value.map((i) => (i.id === id ? { ...i, ...updates } : i)));
 ```
 
 ---
 
-**You did it!** 🎊 You're now ready to build amazing reactive applications with Refract. The journey has just begun - explore, experiment, and enjoy building with Refract!
+**You did it!** You're now ready to build amazing reactive applications with Refract. The journey has just begun - explore, experiment, and enjoy building with Refract!
 
-*Questions? Need help? Join our [Discord community](https://discord.gg/refract) - we're here to help!*
+_Questions? Need help? Join our [Discord community](https://discord.gg/refract) - we're here to help!_
